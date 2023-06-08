@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('last_name')
-                    ->after('name')
-                    ->nullable();
+                ->after('name')
+                ->nullable();
         });
     }
 
