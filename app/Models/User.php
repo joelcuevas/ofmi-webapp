@@ -58,4 +58,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function hasRole(string $role) : bool
+    {
+        return $this->role == $role;
+    }
+
+    public function isAdmin() : bool
+    {
+        return $this->role == 'admin' || $this->role == 'superadmin';
+    }
+
+    public function isSuperadmin() : bool
+    {
+        return $this->role == 'superadmin';
+    }
 }

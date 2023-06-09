@@ -15,6 +15,26 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if (Auth::user()->isAdmin())
+                        <x-nav-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <button type="button" class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 transition ease-in-out duration-150">
+                                    {{ __('Admin') }}
+
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                                    {{ __('Users') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-nav-dropdown>
+                    @endif
                 </div>
             </div>
 
