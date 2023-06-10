@@ -29,11 +29,13 @@
                     <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
                         <div class="flex items-center justify-between">
                             <div>
-                                {{ $header }}
+                                <h2 class="font-semibold text-xl text-gray-800 leading-tight py-2">
+                                    {{ $header }}
+                                </h2>
                             </div>
                             <!-- Toolbar -->
                             @if (isset($toolbar))
-                                <div>
+                                <div class="flex items-center justify-between gap-2">
                                     {{ $toolbar }}
                                 </div>
                             @endif

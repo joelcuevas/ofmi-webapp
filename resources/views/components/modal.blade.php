@@ -13,6 +13,7 @@ $maxWidth = [
 @endphp
 
 <div
+    wire:ignore.self
     x-data="{ show: @entangle($attributes->wire('model')).defer }"
     x-on:close.stop="show = false"
     x-on:keydown.escape.window="show = false"

@@ -39,7 +39,7 @@ switch ($width) {
                 x-transition:leave-start="transform opacity-100 scale-100"
                 x-transition:leave-end="transform opacity-0 scale-95"
                 class="absolute z-50 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }} {{ $dropdownClasses }}"
-                style="display: none; margin-top: 45px;"
+                style="display: none; margin-top: 45px; margin-left: -4px;"
                 @click="open = false">
             <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
                 {{ $content }}

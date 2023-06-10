@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -27,10 +28,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-
     // @todo: change to put methods
     Route::get('/users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('users.make-admin');
     Route::get('/users/{user}/make-contestant', [UserController::class, 'makeContestant'])->name('users.make-contestant');
+
+
+    Route::resource('contests', ContestController::class);
 });
 
