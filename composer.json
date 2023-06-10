@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.11",
+        "spatie/laravel-markdown": "^2.3",
         "wireui/heroicons": "^2.4"
     },
     "require-dev": {

@@ -6,21 +6,21 @@
     <x-configs.sections>
         <x-slot name="menu">                
             <x-configs.menu-header>User Profile</x-configs.menu-header>
-            <x-configs.menu-item anchor="profile" icon="user">{{ __('Profile Information') }}</x-configs.menu-item>
-            <x-configs.menu-item anchor="update-password" icon="lock-closed">{{ __('Update Password') }}</x-configs.menu-item>
-            <x-configs.menu-item anchor="2fa" icon="shield-check">{{ __('Two Factor Authentication') }}</x-configs.menu-item>
-            <x-configs.menu-item anchor="sessions" icon="globe-americas">{{ __('Browser Sessions') }}</x-configs.menu-item>
-            <x-configs.menu-item anchor="delete" icon="face-frown">{{ __('Delete Account') }}</x-configs.menu-item>
+            <x-configs.menu-item link="#profile" icon="user">{{ __('Profile Information') }}</x-configs.menu-item>
+            <x-configs.menu-item link="#passwords" icon="lock-closed">{{ __('Update Password') }}</x-configs.menu-item>
+            <x-configs.menu-item link="#2fa" icon="shield-check">{{ __('Two Factor Authentication') }}</x-configs.menu-item>
+            <x-configs.menu-item link="#sessions" icon="globe-americas">{{ __('Browser Sessions') }}</x-configs.menu-item>
+            <x-configs.menu-item link="#delete" icon="face-frown">{{ __('Delete Account') }}</x-configs.menu-item>
         </x-slot>
 
         <x-slot name="sections">   
-            <x-configs.block anchor="profile-information">
+            <x-configs.block anchor="profile">
                 @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                     @livewire('profile.update-profile-information-form')
                 @endif
             </x-configs.block>
 
-            <x-configs.block anchor="update-password">
+            <x-configs.block anchor="passwords">
                 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                     @livewire('profile.update-password-form')
                 @endif
@@ -32,11 +32,11 @@
                 @endif
             </x-configs.block>
 
-            <x-configs.block anchor="browser-sessions">
+            <x-configs.block anchor="sessions">
                 @livewire('profile.logout-other-browser-sessions-form')
             </x-configs.block>
 
-            <x-configs.block anchor="delete-account" separator="false">
+            <x-configs.block anchor="delete" separator="false">
                 @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                         @livewire('profile.delete-user-form')
                 @endif

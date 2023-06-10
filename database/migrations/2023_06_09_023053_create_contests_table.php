@@ -17,8 +17,8 @@ return new class extends Migration
             $table->tinyInteger('active')->default(0);
             $table->string('status')->default('draft');
             $table->string('title');
-            $table->text('content');
-            $table->text('content_html');  
+            $table->text('description');
+            $table->text('description_html');  
             $table->timestamps();
         });
     }

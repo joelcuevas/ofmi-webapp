@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="toolbar">        
-        <x-link-button href="{{ route('contests.create') }}" label="{{ __('Create') }}" />
+        @livewire('contests.create-contest')
         <x-search-input submit="{{ route('contests.index') }}" placeholder="{{ __('Search for contests') }}"/>
     </x-slot>
 
@@ -24,6 +24,9 @@
                         <x-table-index.td active="true">{{ $contest->title }}</x-table-index.td>
                         <x-table-index.td>{{ __(ucfirst($contest->status)) }}</x-table-index.td>
                         <x-table-index.td class="text-right">
+                            <a href="{{ route('contests.show', $contest) }}" class="font-medium text-indigo-600" data-tooltip-target="tooltip-edit">
+                                <x-icon name="pencil-square" class="inline w-6 h-6"/>
+                            </a>
                         </x-table-index.td>
                     </x-table-index.tr>
                 @endforeach
@@ -32,6 +35,10 @@
 
         <x-slot name="pagination">
             {{ $contests->links() }}
+        </x-slot>
+
+        <x-slot name="tooltips">
+            <x-tooltip id="tooltip-edit" label="{{ __('Edit') }}" />
         </x-slot>
     </x-content-card>
 </x-app-layout>
