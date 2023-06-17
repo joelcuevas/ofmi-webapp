@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index(Request $request) : View
     {
-        abort_unless($request->user()->isAdmin(), 403);
+        $this->authorize('admin');
 
         $users = User::query()
             ->orderBy('name')
@@ -29,9 +29,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function completeProfile(Request $request)
+    {
+        if ($request->user()->profile_complete) {
+            return redirect()->route('profile.show');
+        }
+        
+        return view('auth.complete-profile', [
+            'request' => $request,
+            'user' => $request->user(),
+        ]);
+    }
+
     public function makeAdmin(Request $request, User $user) : mixed
     {
-        abort_unless($request->user()->isSuperadmin(), 403);
+        $this->authorize('superadmin');
 
         if (! $user->hasRole('contestant')) {
             return redirect()->route('users.index')->dangerBanner('User can\'t be modified...');    
@@ -45,7 +57,7 @@ class UserController extends Controller
 
     public function makeContestant(Request $request, User $user) : mixed
     {
-        abort_unless($request->user()->isSuperadmin(), 403);
+        $this->authorize('superadmin');
         
         if (! $user->hasRole('admin')) {
             return redirect()->route('users.index')->dangerBanner('User can\'t be modified...');    

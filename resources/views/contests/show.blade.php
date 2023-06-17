@@ -14,8 +14,10 @@
             <x-configs.block anchor="details" separator="false">
                 <x-action-section>
                     <x-slot name="content">
-                        <h1 class="text-xl font-bold mb-4">{{ $contest->title }}</h1>
-                        {!! $contest->description_html !!}
+                        <div class="prose max-w-full p-5">
+                            <h1 class="text-3xl">{{ $contest->title }}</h1>
+                            {!! $contest->description_html !!}
+                        </div>
                     </x-slot>
                 </x-action-section>
             </x-configs.block>

@@ -11,9 +11,16 @@
                     @endif
                 </div>
             @endif
-            <div class="grid grid-cols-6 gap-6">
-                {{ $form }}
-            </div>
+
+            @if (isset($content))
+                <div>{{ $content }}</div>
+            @endif
+
+            @if (isset($form))
+                <div class="grid grid-cols-10 gap-6">
+                    {{ $form }}
+                </div>
+            @endif
         </div>
 
         @if (isset($actions))

@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,19 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'birth_date',
+        'pronoun',
+        'display_name',
+        'country',
+        'state',
+        'city',
+        'street_and_number',
+        'postal_code',
+        'phone_number',
+        'school_level',
+        'school_grade',
+        'tshirt_size',
+        'tshirt_style',
     ];
 
     protected $hidden = [
@@ -39,9 +53,23 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    protected static function booted(): void
+    {
+        static::creating(function (User $user) {
+            $user->display_name = $user->name.' '.$user->last_name;
+        });
+    }
+
     public function hasRole(string $role) : bool
     {
         return $this->role == $role;
+    }
+
+    protected function pronoun(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => (string) $value,
+        );
     }
 
     public function isAdmin() : bool

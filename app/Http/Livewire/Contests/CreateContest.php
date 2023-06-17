@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Contests;
 
 use Livewire\Component;
 use App\Models\Contest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CreateContest extends Component
 {
+    use AuthorizesRequests;
+
     public $creating = false;
 
     public $year;
@@ -27,11 +30,13 @@ class CreateContest extends Component
 
     public function create()
     {
+        $this->authorize('admin');
+
         $data = $this->validate();
         $data['description'] = 'Lorem ipsum!';
 
         $contest = Contest::create($data);
 
-        return redirect()->route('contests.show', $contest);
+        return redirect()->route('contests.edit', $contest);
     }
 }

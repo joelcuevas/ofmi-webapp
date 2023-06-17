@@ -27,4 +27,21 @@ class Contest extends Model
             $contest->description_html = $html;
         });
     }
+
+    public function activate()
+    {
+        if (! $this->active)
+        {
+            $this->active = true;
+            $this->save();
+
+            self::whereNot('id', $this->id)
+                ->where('active', true)
+                ->update(['active' => false]);
+
+            return true;
+        }
+
+        return false;
+    }
 }

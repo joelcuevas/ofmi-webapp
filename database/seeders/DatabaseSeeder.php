@@ -44,9 +44,11 @@ class DatabaseSeeder extends Seeder
 
     protected function seedContests()
     {
-        Contest::factory()->create([
+        $contest = Contest::factory()->create([
             'year' => '2023',
             'title' => 'OFMI 2023',
         ]);
+
+        $contest->activate();
     }
 }

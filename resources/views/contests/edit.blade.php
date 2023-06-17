@@ -11,7 +11,10 @@
         </x-slot>
 
         <x-slot name="sections">   
-            <x-configs.block anchor="content" separator="false">
+            <x-configs.block anchor="activate">
+                @livewire('contests.activate-contest', ['contest' => $contest])
+            </x-configs.block>
+            <x-configs.block anchor="information" separator="false">
                 @livewire('contests.update-contest-information', ['contest' => $contest])
             </x-configs.block>
         </x-slot>

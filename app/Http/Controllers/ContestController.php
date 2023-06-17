@@ -9,7 +9,7 @@ class ContestController extends Controller
 {
     public function index(Request $request)
     {
-        abort_unless($request->user()->isAdmin(), 403);
+        $this->authorize('admin');
 
         $contests = Contest::orderBy('year', 'desc');
 
@@ -27,25 +27,15 @@ class ContestController extends Controller
 
     public function show(Request $request, Contest $contest)
     {
-        abort_unless($request->user()->isAdmin(), 403);
+        $this->authorize('admin');
 
         return view('contests.show', ['contest' => $contest]);
     }
 
     public function edit(Request $request, Contest $contest)
     {
-        abort_unless($request->user()->isAdmin(), 403);
+        $this->authorize('admin');
 
         return view('contests.edit', ['contest' => $contest]);
-    }
-
-    public function update(Request $request, Contest $contest)
-    {
-        abort_unless($request->user()->isAdmin(), 403);
-    }
-
-    public function destroy(Request $request, Contest $contest)
-    {
-        abort_unless($request->user()->isAdmin(), 403);
     }
 }
