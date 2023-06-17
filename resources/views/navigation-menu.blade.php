@@ -105,7 +105,7 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
-¿                            <x-dropdown-link href="{{ route('dashboard') }}">
+                            <x-dropdown-link href="{{ route('dashboard') }}">
                                 {{ __('Dashboard') }}
                             </x-dropdown-link>
 
