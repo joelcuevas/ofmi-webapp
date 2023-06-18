@@ -106,7 +106,7 @@
                             </x-dropdown-link>
 
                             <x-dropdown-link href="{{ route('dashboard') }}">
-                                {{ __('Dashboard') }}
+                                {{ __('Admin') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

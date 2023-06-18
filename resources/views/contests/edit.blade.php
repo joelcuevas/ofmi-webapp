@@ -14,7 +14,8 @@
             <x-configs.block anchor="activate">
                 @livewire('contests.activate-contest', ['contest' => $contest])
             </x-configs.block>
-            <x-configs.block anchor="information" separator="false">
+
+            <x-configs.block anchor="update" separator="false">
                 @livewire('contests.update-contest-information', ['contest' => $contest])
             </x-configs.block>
         </x-slot>

@@ -48,7 +48,7 @@
 
                             @if (Auth::user()->isAdmin())
                                 <x-dropdown-link href="{{ route('dashboard') }}">
-                                    {{ __('Dashboard') }}
+                                    {{ __('Admin') }}
                                 </x-dropdown-link>
                             @endif
 
@@ -111,7 +111,7 @@
 
                 @if (Auth::user()->isAdmin())
                     <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Admin') }}
                     </x-responsive-nav-link>
                 @endif
 

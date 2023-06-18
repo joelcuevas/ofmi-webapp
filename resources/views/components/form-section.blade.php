@@ -1,4 +1,8 @@
-@props(['submit'])
+@props(['submit', 'cols'])
+
+@php
+$cols = $cols ?? 6;
+@endphp
 
 <div class="mt-5 md:mt-0">
     <form wire:submit.prevent="{{ $submit }}">
@@ -17,7 +21,7 @@
             @endif
 
             @if (isset($form))
-                <div class="grid grid-cols-10 gap-6">
+                <div class="grid grid-cols-{{ $cols }} gap-6">
                     {{ $form }}
                 </div>
             @endif

@@ -1,4 +1,4 @@
-<x-form-section submit="updateProfileInformation">
+<x-form-section submit="updateProfileInformation" cols="10">
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
