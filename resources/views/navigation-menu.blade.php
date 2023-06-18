@@ -101,12 +101,14 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                            <x-dropdown-link href="{{ route('home') }}">
+                                <x-icon name="home" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
+                                {{ __('Home') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link href="{{ route('dashboard') }}">
-                                {{ __('Admin') }}
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
+                                {{ __('Profile') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -120,7 +122,8 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                        @click.prevent="$root.submit();">
+                                    <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -159,24 +162,15 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <!--
-            <div class="flex items-center px-4">
-                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <div class="shrink-0 mr-3">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                    </div>
-                @endif
-
-                <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-            </div>
-            -->
-
             <div class="space-y-1">
+                <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                    <x-icon name="home" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                    <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
@@ -191,7 +185,8 @@
                     @csrf
 
                     <x-responsive-nav-link href="{{ route('logout') }}"
-                                   @click.prevent="$root.submit();">
+                                @click.prevent="$root.submit();">
+                        <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

@@ -26,6 +26,7 @@
 
                         <x-table-index.td class="text-right">
                             @if (request()->user()->isSuperadmin())
+                                @livewire('users.change-user-role', ['user' => $user])
                                 @if ($user->hasRole('admin'))
                                     <a href="{{ route('users.make-contestant', $user) }}" class="font-medium text-indigo-600" data-tooltip-target="tooltip-make-contestant">
                                         <x-icon name="minus-circle" class="inline w-6 h-6"/>
