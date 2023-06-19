@@ -13,6 +13,7 @@ class CreateContest extends Component
     public $creating = false;
 
     public $year;
+    
     public $title;
 
     protected function rules()

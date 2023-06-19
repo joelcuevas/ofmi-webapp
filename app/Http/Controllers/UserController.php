@@ -12,21 +12,7 @@ class UserController extends Controller
     {
         $this->authorize('admin');
 
-        $users = User::query()
-            ->orderBy('name')
-            ->orderBy('last_name');
-
-        if ($request->has('q')) {
-            $q = '%'.$request->q.'%';
-
-            $users->where('name', 'like', $q)
-                ->orWhere('last_name', 'like', $q)
-                ->orWhere('email', 'like', $q);
-        }
-
-        return view('users.index', [
-            'users' => $users->paginate(50),
-        ]);
+        return view('users.index');
     }
 
     public function completeProfile(Request $request)
@@ -39,33 +25,5 @@ class UserController extends Controller
             'request' => $request,
             'user' => $request->user(),
         ]);
-    }
-
-    public function makeAdmin(Request $request, User $user) : mixed
-    {
-        $this->authorize('superadmin');
-
-        if (! $user->hasRole('contestant')) {
-            return redirect()->route('users.index')->dangerBanner('User can\'t be modified...');    
-        }
-        
-        $user->role = 'admin';
-        $user->save();
-
-        return redirect()->route('users.index')->banner('User made admin!');
-    }
-
-    public function makeContestant(Request $request, User $user) : mixed
-    {
-        $this->authorize('superadmin');
-        
-        if (! $user->hasRole('admin')) {
-            return redirect()->route('users.index')->dangerBanner('User can\'t be modified...');    
-        }
-        
-        $user->role = 'contestant';
-        $user->save();
-
-        return redirect()->route('users.index')->banner('User made contestant!');
     }
 }

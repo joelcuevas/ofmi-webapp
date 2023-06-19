@@ -37,16 +37,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // complete profile
     Route::get('/register/profile', [UserController::class, 'completeProfile'])
         ->withoutMiddleware(CompleteProfile::class)
         ->name('auth.complete-profile');
 
     // users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    // @todo: change to put methods
-    Route::get('/users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('users.make-admin');
-    Route::get('/users/{user}/make-contestant', [UserController::class, 'makeContestant'])->name('users.make-contestant');
-
 
     // contests
     Route::resource('contests', ContestController::class);

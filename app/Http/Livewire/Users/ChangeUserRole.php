@@ -4,14 +4,21 @@ namespace App\Http\Livewire\Users;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ChangeUserRole extends Component
 {
+    use AuthorizesRequests; 
+
     public $user;
 
     public $role;
 
     public $updating = false;
+
+    public $rules = [
+        'role' => 'required|in:contestant,admin,superadmin',
+    ];
 
     public function mount($user)
     {
@@ -26,5 +33,14 @@ class ChangeUserRole extends Component
     public function update()
     {
         $this->authorize('superadmin');
+
+        $data = $this->validate();
+
+        $this->user->role = $data['role'];
+        $this->user->save();
+
+        $this->updating = false;
+
+        $this->emit('refreshUsersIndex');
     }
 }
