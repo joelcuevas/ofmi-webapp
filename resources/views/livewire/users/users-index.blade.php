@@ -1,4 +1,5 @@
-<x-content-card>
+<div>
+    <x-content-card>
     <x-table-index>
         <x-slot name="header">
             <x-table-index.th label="{{ __('Name') }}" />
@@ -16,7 +17,7 @@
 
                     <x-table-index.td class="text-right">
                         @if (request()->user()->isSuperadmin())
-                            @livewire('users.change-user-role', ['user' => $user])
+                            @livewire('users.change-user-role', ['user' => $user], key('change-user-role-'.$user->id))
                         @endif
                     </x-table-index.td>
                 </x-table-index.tr>
@@ -26,9 +27,13 @@
 
     <x-slot name="pagination">
         {{ $users->links() }}
+        <x-secondary-button wire:click="$emit('refreshUsersList')">
+            refresh
+        </x-secondary-button>
     </x-slot>
 
     <x-slot name="tooltips">
         <x-tooltip id="tooltip-change-role" label="{{ __('Change Role') }}" />
     </x-slot>
 </x-content-card>
+</div>
