@@ -27,9 +27,6 @@
 
     <x-slot name="pagination">
         {{ $users->links() }}
-        <x-secondary-button wire:click="$emit('refreshUsersList')">
-            refresh
-        </x-secondary-button>
     </x-slot>
 
     <x-slot name="tooltips">

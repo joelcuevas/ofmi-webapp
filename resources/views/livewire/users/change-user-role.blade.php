@@ -1,7 +1,7 @@
 <div>
-    <x-secondary-button wire:click="$set('updating', true)" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-change-role">
+    <x-button secondary wire:click="$set('updating', true)" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-change-role">
         <x-icon name="academic-cap" class="inline-flex text-align-bottom w-4 h-4 px-0" /> 
-    </x-secondary-button>
+    </x-button>
 
     <x-modal wire:model="updating">
         <x-form-section submit="update">
@@ -22,9 +22,9 @@
             </x-slot>
 
             <x-slot name="actions">
-                <x-secondary-button wire:click="$toggle('updating')" wire:loading.attr="disabled">
+                <x-button secondary wire:click="$toggle('updating')" wire:loading.attr="disabled">
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </x-button>
 
                 <x-button class="ml-2">
                     {{ __('Change') }}
