@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contest_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('email');
             $table->string('status')->default('active');
+            $table->string('school_level');
+            $table->string('school_grade');
+            $table->string('school_name');
+            $table->string('tshirt_size');
+            $table->string('tshirt_style');
             $table->timestamps();
         });
     }

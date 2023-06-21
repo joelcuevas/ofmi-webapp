@@ -15,7 +15,7 @@ class ContestFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => 'This is markdown',
+            'description' => $this->faker->markdown(),
         ];
     }
 }

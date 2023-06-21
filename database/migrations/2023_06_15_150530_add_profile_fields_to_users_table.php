@@ -22,10 +22,6 @@ return new class extends Migration
             $table->string('street_and_number')->nullable()->after('city');
             $table->string('postal_code')->nullable()->after('street_and_number');
             $table->string('phone_number')->nullable()->after('postal_code');
-            $table->string('school_level')->nullable()->after('phone_number');
-            $table->string('school_grade')->nullable()->after('school_level');
-            $table->string('tshirt_size')->default('')->after('school_grade');
-            $table->string('tshirt_style')->default('')->after('tshirt_size');
         });
     }
 
@@ -46,10 +42,6 @@ return new class extends Migration
                 'street_and_number',
                 'postal_code',
                 'phone_number',
-                'school_level',
-                'school_grade',
-                'tshirt_size',
-                'tshirt_style',
             ]);
         });
     }
