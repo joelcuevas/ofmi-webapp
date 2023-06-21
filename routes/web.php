@@ -22,6 +22,8 @@ Route::middleware([
     CompleteProfile::class,
 ])->group(function () {
     Route::get('/', [WebsiteController::class, 'home'])->name('home');
+    Route::get('/rules', [WebsiteController::class, 'home'])->name('rules');
+    Route::get('/contest', [WebsiteController::class, 'home'])->name('contest');
 });
 
 

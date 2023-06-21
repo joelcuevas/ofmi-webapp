@@ -72,6 +72,11 @@ class User extends Authenticatable
         );
     }
 
+    public function isContestant() : bool
+    {
+        return $this->role == 'contestant';
+    }
+
     public function isAdmin() : bool
     {
         return $this->role == 'admin' || $this->role == 'superadmin';
@@ -80,5 +85,21 @@ class User extends Authenticatable
     public function isSuperadmin() : bool
     {
         return $this->role == 'superadmin';
+    }
+
+    public function getFullName()
+    {
+        return $this->name.' '.$this->last_name;
+    }
+
+    public function getFullAddress()
+    {
+        return implode(', ', [
+            $this->street_and_number,
+            $this->city,
+            $this->state,
+            $this->postal_code,
+            $this->country,
+        ]);
     }
 }

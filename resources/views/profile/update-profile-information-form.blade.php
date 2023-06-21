@@ -61,7 +61,7 @@
         <div class="col-span-10 sm:col-span-2">
             <x-label for="pronoun" value="{{ __('Pronoun') }}" />
             <x-inputs.select id="pronoun" class="mt-1 block w-full" wire:model.defer="state.pronoun">
-                <option value="" disabled selected>{{ __('Choose...') }}</option>
+                <option value="" disabled selected>{{ __('Select...') }}</option>
                 <option value="She">{{ __('She') }}</option>
                 <option value="They">{{ __('They') }}</option>
                 <option value="He">{{ __('He') }}</option>
@@ -148,7 +148,7 @@
             @if ($state['country'] == 'MX')
                 <!-- State: MX -->
                 <x-inputs.select id="state" class="mt-1 block w-full" wire:model.defer="state.state">
-                    <option value="" disabled selected hidden>{{ __('Choose...') }}</option>
+                    <option value="" disabled selected hidden>{{ __('Select...') }}</option>
                     <option value="Aguascalientes">Aguascalientes</option>
                     <option value="Baja California">Baja California</option>
                     <option value="Baja California Sur">Baja California Sur</option>

@@ -34,6 +34,14 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'pronoun' => $this->faker->randomElement(['She', 'They', 'He']),
+            'birth_date' => $this->faker->date('Y-m-d'),
+            'country' => 'MX',
+            'state' => $this->faker->randomElement(['México', 'Nuevo León', 'Veracruz']),
+            'city' => $this->faker->city(),
+            'street_and_number' => $this->faker->streetAddress(),
+            'postal_code' => $this->faker->postcode(),
+            'phone_number' => $this->faker->phoneNumber(),
         ];
     }
 

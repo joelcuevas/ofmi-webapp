@@ -6,20 +6,15 @@ use Livewire\Component;
 
 class ContestApplication extends Component
 {
-    public $applying = false;
+    public $applying = true;
 
     public $user;
-    public $name;
-    public $last_name;
+
+    public $schoolLevel = '';
 
     public function mount($user)
     {
-        if ($user) {
-            $this->name = $user->name;
-            $this->last_name = $user->last_name;
-        }
-
-        request()->session()->put('x.url.intended', route('home'));
+        request()->session()->put('x.url.intended', route('home', ['apply_to_contest' => true]));
     }
     
     public function render()
