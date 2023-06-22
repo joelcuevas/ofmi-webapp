@@ -5,3 +5,9 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+  .text-link {
+    @apply text-indigo-700 underline hover:no-underline;
+  }
+}

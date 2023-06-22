@@ -39,6 +39,7 @@ $maxWidth = [
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <div x-on:click="show = false" class="cursor-pointer font-bold text-2xl absolute right-4 top-1 text-gray-400 hover:text-red-700">&times;</div>
         {{ $slot }}
     </div>
 </div>
