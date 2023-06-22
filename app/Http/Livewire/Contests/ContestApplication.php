@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 
 class ContestApplication extends Component
 {
-    public $applying = true;
+    public $applying = false;
 
     public $contest;
 
@@ -56,7 +56,7 @@ class ContestApplication extends Component
     {
         $this->contest = Contest::where('active', 1)->first();
         $this->userRegistered = $this->contest->hasContestant($user);
-        
+
         request()->session()->put('x.url.intended', route('home', ['apply_to_contest' => true]));
     }
     
@@ -67,7 +67,6 @@ class ContestApplication extends Component
 
     public function apply()
     {
-        $this->emit('error');
         $data = $this->validate();
 
         $this->userRegistered = $this->contest->registerContestant($this->user, $data);

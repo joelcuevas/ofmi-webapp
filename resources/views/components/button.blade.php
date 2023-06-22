@@ -1,4 +1,4 @@
-@props(['primary', 'secondary'])
+@props(['primary', 'secondary', 'href'])
 
 @php
 $type = 'submit';
@@ -10,6 +10,12 @@ if (isset($secondary)) {
 }
 @endphp
 
-<button {{ $attributes->merge(['type' => $type, 'class' => $class]) }}>
-    {{ $slot }}
-</button>
+@if (isset($href))
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $class]) }}>
+        {{ $slot }}
+    </a>
+@else
+    <button {{ $attributes->merge(['type' => $type, 'class' => $class]) }}>
+        {{ $slot }}
+    </button>
+@endif

@@ -32,9 +32,9 @@
                         </x-table-index.td>
                         <x-table-index.td>{{ __(ucfirst($contest->status)) }}</x-table-index.td>
                         <x-table-index.td class="text-right">
-                            <x-link-button secondary href="{{ route('contests.show', $contest) }}" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-config">
+                            <x-button secondary href="{{ route('contests.show', $contest) }}" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-config">
                                 <x-icon name="cog-6-tooth" class="inline-flex text-align-bottom w-4 h-4 px-0" /> 
-                            </x-link-button>
+                            </x-button>
                         </x-table-index.td>
                     </x-table-index.tr>
                 @endforeach

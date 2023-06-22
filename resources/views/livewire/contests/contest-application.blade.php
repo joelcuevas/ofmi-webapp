@@ -1,6 +1,9 @@
 <div>
     <x-button wire:click="$set('applying', true)">{{ __('Apply now!')}}</x-button>
 
+    @section('ofmi_email')<a href="email:ofmi@omegaup.com" class="text-link">ofmi@omegaup.com</a>@overwrite
+    @section('discord_server')<a href="https://discord.gg/gn6GTb4rfG" target="_blank" class="text-link">{{ __('Discord server') }}</a>@overwrite
+
     <x-modal wire:model="applying">
         @if ($user)
             <x-form-section submit="apply">
@@ -120,9 +123,9 @@
                                 {{ __('User can\'t be registered to this contest!') }}
                             </x-action-message>
 
-                            <x-secondary-button wire:click="$toggle('applying')" wire:loading.attr="disabled">
+                            <x-button secondary wire:click="$set('applying', false)" wire:loading.attr="disabled">
                                 {{ __('Cancel') }}
-                            </x-secondary-button>
+                            </x-button>
 
                             <x-button class="ml-2">
                                 {{ __('Apply!') }}
@@ -161,7 +164,7 @@
                         </x-slot>
 
                         <x-slot name="actions">
-                            <x-button wire:click="$toggle('applying')" wire:loading.attr="disabled">
+                            <x-button type="button" wire:click="$set('applying', false)" wire:loading.attr="disabled">
                                 {{ __('Great!') }}
                             </x-button>
                         </x-slot>
@@ -170,15 +173,19 @@
                     <x-slot name="content">
                         <div class="p-4 bg-orange-700 text-white rounded-md text-center">
                             <x-icon name="exclamation-triangle" class="inline w-10 h-10" />
-                            <div>{{ __('Oops! Only contestants can apply to a contest.') }}</div>
+                            <div>{{ __('Only contestants can apply to this contest.') }}</div>
                         </div>
+                        <p class="mt-6">
+                            {!! __('Only contestants can apply to this contest. If you think this message is an error and you are eligible to participate, please get in touch with us at: :ofmi_email.', [
+                                'ofmi_email' => view()->yieldContent('ofmi_email'),
+                            ]) !!}</p>
                     </x-slot>
 
                     <x-slot name="actions">
                         <a href="email:ofmi@omegaup.com" class="text-gray-600 hover:text-gray-900 underline hover:no-underline text-sm mr-3">Need help?</a>
-                        <x-secondary-button wire:click="$toggle('applying')" wire:loading.attr="disabled">
+                        <x-button secondary wire:click="$set('applying', false)" wire:loading.attr="disabled">
                             {{ __('Close') }}
-                        </x-secondary-button>
+                        </x-button>
                     </x-slot>
                 @endif
             </x-form-section>
@@ -188,21 +195,17 @@
                     {{ __('Apply to Contest') }}
                 </x-slot>
 
-                <x-slot name="description">
-                    {{ __('You need to register or log in to apply to this contest.') }}
-                </x-slot>
-
                 <x-slot name="content">
-                    @section('ofmi_email')<a href="email:ofmi@omegaup.com" class="text-link">ofmi@omegaup.com</a>@overwrite
-                    @section('discord_server')<a href="https://discord.gg/gn6GTb4rfG" target="_blank" class="text-link">{{ __('Discord server') }}</a>@overwrite
-
-                    <p class="mb-7">
-                        {!! __('Need help? Write us at :ofmi_email, or join our :discord_server and chat with other contestants and trainers!', [
+                    <p class="mt-4 font-bold">
+                        {{ __('You need to register or log in to apply to this contest.') }}
+                    </p>
+                    <p class="mt-2 mb-7 text-sm">
+                        {!! __('Need help? Please write us at :ofmi_email, or join our :discord_server and chat with our community of trainers and past contestants!', [
                             'ofmi_email' => view()->yieldContent('ofmi_email'),
                             'discord_server' => view()->yieldContent('discord_server'),
                         ]) !!}
                     </p>
-                    <x-link-button href="{{ route('register') }}">{{ __('Register') }}</x-link-button>
+                    <x-button href="{{ route('register') }}">{{ __('Register') }}</x-button>
                     <a class="underline text-indigo-600 hover:no-underline ml-3" href="{{ route('login') }}">{{ __('Already have and account?') }}</a>
                 </x-slot>
             </x-action-section>
