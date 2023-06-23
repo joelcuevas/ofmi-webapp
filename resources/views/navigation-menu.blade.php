@@ -16,12 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+
                     <x-nav-link href="{{ route('contests.index') }}" :active="request()->routeIs('contests.index')">
                         {{ __('Contests') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Users') }}
+                    <x-nav-link href="{{ route('pages.index') }}" :active="request()->routeIs('pages.index')">
+                        {{ __('Pages') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -151,12 +155,16 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('Users') }}
+            </x-responsive-nav-link>
+
             <x-responsive-nav-link href="{{ route('contests.index') }}" :active="request()->routeIs('contests.index')">
                 {{ __('Contests') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                {{ __('Users') }}
+            <x-responsive-nav-link href="{{ route('pages.index') }}" :active="request()->routeIs('pages.index')">
+                {{ __('Pages') }}
             </x-responsive-nav-link>
         </div>
 

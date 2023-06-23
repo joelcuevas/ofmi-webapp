@@ -9,19 +9,25 @@
         </x-slot>
 
         <x-slot name="body">
-            @foreach ($users as $user)
+            @forelse ($users as $user)
                 <x-table-index.tr>
                     <x-table-index.td active="true">{{ $user->name }} {{ $user->last_name }}</x-table-index.td>
                     <x-table-index.td>{{ $user->email }}</x-table-index.td>
                     <x-table-index.td>{{ __(ucfirst($user->role)) }}</x-table-index.td>
-
                     <x-table-index.td class="text-right">
                         @if (request()->user()->isSuperadmin())
                             @livewire('users.change-user-role', ['user' => $user], key('change-user-role-'.$user->id))
                         @endif
                     </x-table-index.td>
                 </x-table-index.tr>
-            @endforeach
+            @empty
+                <x-table-index.tr>
+                    <x-table-index.td colspan="4">
+                        <x-icon name="face-frown" class="inline align-text-bottom w-4 h-4" /> 
+                        {{ __('Nothing to see...') }}
+                    </x-table-index.td>
+                </x-table-index.tr>
+            @endforelse
         </x-slot>
     </x-table-index>
 

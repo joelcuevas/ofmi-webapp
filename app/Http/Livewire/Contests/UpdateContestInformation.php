@@ -9,8 +9,11 @@ use Illuminate\Validation\Rule;
 class UpdateContestInformation extends Component
 {
     public $contest;
+
     public $year;
+    
     public $title;
+    
     public $description;
 
     protected function rules()

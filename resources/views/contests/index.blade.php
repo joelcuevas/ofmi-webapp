@@ -19,7 +19,7 @@
             </x-slot>
 
             <x-slot name="body">
-                @foreach ($contests as $contest)
+                @forelse ($contests as $contest)
                     <x-table-index.tr>
                         <x-table-index.td active="true">{{ $contest->title }}</x-table-index.td>
                         <x-table-index.td>{{ $contest->year }}</x-table-index.td>
@@ -32,12 +32,19 @@
                         </x-table-index.td>
                         <x-table-index.td>{{ __(ucfirst($contest->status)) }}</x-table-index.td>
                         <x-table-index.td class="text-right">
-                            <x-button secondary href="{{ route('contests.show', $contest) }}" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-config">
-                                <x-icon name="cog-6-tooth" class="inline-flex text-align-bottom w-4 h-4 px-0" /> 
+                            <x-button secondary href="{{ route('contests.show', $contest) }}" class="px-[5px] py-[3px]" data-tooltip-target="tooltip-edit">
+                                <x-icon name="pencil-square" class="inline-flex text-align-bottom w-4 h-4 px-0" /> 
                             </x-button>
                         </x-table-index.td>
                     </x-table-index.tr>
-                @endforeach
+                @empty
+                    <x-table-index.tr>
+                        <x-table-index.td colspan="6">
+                            <x-icon name="face-frown" class="inline align-text-bottom w-4 h-4" /> 
+                            {{ __('Nothing to see...') }}
+                        </x-table-index.td>
+                    </x-table-index.tr>
+                @endforelse
             </x-slot>
         </x-table-index>
 
@@ -46,7 +53,7 @@
         </x-slot>
 
         <x-slot name="tooltips">
-            <x-tooltip id="tooltip-config" label="{{ __('Contest Config') }}" />
+            <x-tooltip id="tooltip-edit" label="{{ __('Edit Contest') }}" />
         </x-slot>
     </x-content-card>
 </x-app-layout>

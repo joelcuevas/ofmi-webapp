@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contests', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('year')->index();
-            $table->tinyInteger('active')->default(0)->index();
-            $table->string('status')->default('draft');
+            $table->string('slug')->unique()->index();
             $table->string('title');
-            $table->text('description');
-            $table->text('description_html');  
+            $table->text('content');
+            $table->text('content_html');
+            $table->text('label');
+            $table->tinyInteger('order')->default(99)->index();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contests');
+        Schema::dropIfExists('pages');
     }
 };

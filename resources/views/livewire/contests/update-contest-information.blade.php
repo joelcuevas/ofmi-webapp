@@ -1,10 +1,10 @@
 <x-form-section submit="update">
     <x-slot name="title">
-        {{ __('Update Information') }}
+        {{ __('Edit Information') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your contest information. Year should be unique and description can use Markdown.') }}
+        {{ __('Edit your contest information. Year should be unique, and description can use Markdown, HTML and Tailwind CSS.') }}
     </x-slot>
 
     <x-slot name="form">

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -15,6 +15,12 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
+
+                    @foreach ($pages as $page)
+                        <x-nav-link href="{{ route('pages.view', $page->slug) }}" :active="request()->is($page->slug)">
+                            {{ $page->label }}
+                        </x-nav-link>
+                    @endforeach
                 </div>
             </div>
 
@@ -93,6 +99,12 @@
             <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
+
+            @foreach ($pages as $page)
+                <x-responsive-nav-link href="{{ route('pages.view', $page->slug) }}" :active="request()->is($page->slug)">
+                    {{ $page->label }}
+                </x-responsive-nav-link>
+            @endforeach
         </div>
 
         <!-- Responsive Settings Options -->
