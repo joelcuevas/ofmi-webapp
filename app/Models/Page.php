@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -21,8 +21,7 @@ class Page extends Model
     protected static function booted(): void
     {
         static::saving(function (Page $page) {
-            $html = app(MarkdownRenderer::class)->toHtml($page->content);
-            $page->content_html = $html;
+            $page->content_html = Str::markdown($page->content);
         });
     }
 

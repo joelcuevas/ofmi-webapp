@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Contestant;
 
@@ -25,8 +25,7 @@ class Contest extends Model
     protected static function booted(): void
     {
         static::saving(function (Contest $contest) {
-            $html = app(MarkdownRenderer::class)->toHtml($contest->description);
-            $contest->description_html = $html;
+            $contest->description_html = Str::markdown($contest->description);
         });
     }
 

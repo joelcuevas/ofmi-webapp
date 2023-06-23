@@ -13,7 +13,6 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.11",
         "nerdsnipe/laravel-countries": "^1.2",
-        "spatie/laravel-markdown": "^2.3",
         "wireui/heroicons": "^2.4"
     },
     "require-dev": {
