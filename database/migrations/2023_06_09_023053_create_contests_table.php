@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('year')->index();
             $table->tinyInteger('active')->default(0)->index();
-            $table->string('status')->default('draft');
+            $table->string('status')->default('Draft');
             $table->string('title');
             $table->text('description');
             $table->text('description_html');  

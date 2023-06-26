@@ -22,21 +22,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'last_name' => 'User',
             'email' => 'admin@ofmi.com',
-            'role' => 'superadmin',
+            'role' => 'Administrador',
         ]);
 
         User::factory()->create([
             'name' => 'Superadmin',
             'last_name' => 'User',
             'email' => 'superadmin@ofmi.com',
-            'role' => 'superadmin',
+            'role' => 'Superadmin',
         ]);
 
         User::factory()->create([
             'name' => 'Contestant',
             'last_name' => 'User',
             'email' => 'contestant@ofmi.com',
-            'role' => 'contestant',
+            'role' => 'Competidor',
         ]);
     }
 

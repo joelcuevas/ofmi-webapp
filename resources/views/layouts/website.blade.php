@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="font-sans antialiased">
-            <div class="min-h-screen bg-gray-100">
+            <div class="min-h-screen">
                 @livewire('menus.website-menu')
                 <main>
                     {{ $slot }}

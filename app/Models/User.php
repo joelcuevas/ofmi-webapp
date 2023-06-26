@@ -74,17 +74,17 @@ class User extends Authenticatable
 
     public function isContestant() : bool
     {
-        return $this->role == 'contestant';
+        return $this->role == 'Competidor';
     }
 
     public function isAdmin() : bool
     {
-        return $this->role == 'admin' || $this->role == 'superadmin';
+        return $this->role == 'Administrador' || $this->role == 'Superadmin';
     }
 
     public function isSuperadmin() : bool
     {
-        return $this->role == 'superadmin';
+        return $this->role == 'Superadmin';
     }
 
     public function getFullName()

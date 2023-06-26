@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contest_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('status')->default('active');
+            $table->string('status')->default('Activo');
             $table->string('school_level');
             $table->string('school_grade');
             $table->string('school_name');

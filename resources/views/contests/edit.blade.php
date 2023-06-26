@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Contests') }}
+        Concursos
         <x-icon name="chevron-double-right" class="inline-flex h-4 w-4" />
-        {{ __('Edit') }}
+        Editar
     </x-slot>
 
     <x-configs.sections>

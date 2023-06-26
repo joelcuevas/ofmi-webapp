@@ -17,7 +17,7 @@ class ChangeUserRole extends Component
     public $updating = false;
 
     public $rules = [
-        'role' => 'required|in:contestant,admin,superadmin',
+        'role' => 'required|in:Competidor,Administrador,Superadmin',
     ];
 
     public function mount($user)

@@ -12,20 +12,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="{{ route('dashboard') }}">
+                        Dashboard
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Users') }}
+                    <x-nav-link href="{{ route('users.index') }}">
+                        Usuarios
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('contests.index') }}" :active="request()->routeIs('contests.index')">
-                        {{ __('Contests') }}
+                    <x-nav-link href="{{ route('contests.index') }}">
+                        Concursos
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('pages.index') }}" :active="request()->routeIs('pages.index')">
-                        {{ __('Pages') }}
+                    <x-nav-link href="{{ route('pages.index') }}">
+                        Páginas
                     </x-nav-link>
                 </div>
             </div>
@@ -107,12 +107,12 @@
                         <x-slot name="content">
                             <x-dropdown-link href="{{ route('home') }}">
                                 <x-icon name="home" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                                {{ __('Home') }}
+                                Website
                             </x-dropdown-link>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                                {{ __('Profile') }}
+                                Perfil
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -128,7 +128,7 @@
                                 <x-dropdown-link href="{{ route('logout') }}"
                                         @click.prevent="$root.submit();">
                                     <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                                    {{ __('Log Out') }}
+                                    Cerrar Sesión
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -151,39 +151,39 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link href="{{ route('dashboard') }}">
+                Dashboard
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                {{ __('Users') }}
+            <x-responsive-nav-link href="{{ route('users.index') }}">
+                Usuarios
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('contests.index') }}" :active="request()->routeIs('contests.index')">
-                {{ __('Contests') }}
+            <x-responsive-nav-link href="{{ route('contests.index') }}">
+                Concursos
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('pages.index') }}" :active="request()->routeIs('pages.index')">
-                {{ __('Pages') }}
+            <x-responsive-nav-link href="{{ route('pages.index') }}">
+                Páginas
             </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="space-y-1">
-                <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <x-responsive-nav-link href="{{ route('home') }}">
                     <x-icon name="home" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                    {{ __('Home') }}
+                    Website
                 </x-responsive-nav-link>
 
                 <!-- Account Management -->
-                <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                <x-responsive-nav-link href="{{ route('profile.show') }}">
                     <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                    {{ __('Profile') }}
+                    Perfil
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                    <x-responsive-nav-link href="{{ route('api-tokens.index') }}">
                         {{ __('API Tokens') }}
                     </x-responsive-nav-link>
                 @endif
@@ -195,7 +195,7 @@
                     <x-responsive-nav-link href="{{ route('logout') }}"
                                 @click.prevent="$root.submit();">
                         <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                        {{ __('Log Out') }}
+                        Cerrar Sesión
                     </x-responsive-nav-link>
                 </form>
 
@@ -208,12 +208,12 @@
                     </div>
 
                     <!-- Team Settings -->
-                    <x-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
+                    <x-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
                         {{ __('Team Settings') }}
                     </x-responsive-nav-link>
 
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
+                        <x-responsive-nav-link href="{{ route('teams.create') }}">
                             {{ __('Create New Team') }}
                         </x-responsive-nav-link>
                     @endcan

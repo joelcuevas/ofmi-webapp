@@ -1,6 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white shadow">
+<nav x-data="{ open: false }" class="bg-white">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="web-container py-3">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -12,15 +12,77 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
+                    <x-web-nav-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-indigo-600 transition ease-in-out duration-150">
+                                Participa
 
-                    @foreach ($pages as $page)
-                        <x-nav-link href="{{ route('pages.view', $page->slug) }}" :active="request()->is($page->slug)">
-                            {{ $page->label }}
-                        </x-nav-link>
-                    @endforeach
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Convocatoria 2023
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('contests.results') }}">
+                                Resultados
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('pages.view', ['slug' => 'reglamento']) }}">
+                                Reglamento
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('pages.view', ['slug' => 'codigo-de-conducta']) }}">
+                                Código de Conducta
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-web-nav-dropdown>
+
+                    <x-web-nav-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-indigo-600 transition ease-in-out duration-150">
+                                Entrena
+
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Material de Estudio
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Preguntas Frecuentes
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-web-nav-dropdown>
+
+                    <x-web-nav-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-indigo-600 transition ease-in-out duration-150">
+                                Contribuye
+
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Donaciones
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Voluntarios
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('contests.view', ['year' => '2023']) }}">
+                                Sugiere un Problema
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-web-nav-dropdown>
                 </div>
             </div>
 
@@ -51,14 +113,14 @@
                                 @if (Auth::user()->isAdmin())
                                     <x-dropdown-link href="{{ route('dashboard') }}">
                                         <x-icon name="star" class="inline-flex align-text-bottom w-4 h-4 mr-1" />
-                                        {{ __('Admin') }}
+                                        Admin Panel
                                     </x-dropdown-link>
                                 @endif
 
                                 <!-- Account Management -->
                                 <x-dropdown-link href="{{ route('profile.show') }}">
                                     <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" />
-                                    {{ __('Profile') }}
+                                    Perfil
                                 </x-dropdown-link>
 
                                 <!-- Authentication -->
@@ -68,16 +130,19 @@
                                     <x-dropdown-link href="{{ route('logout') }}"
                                             @click.prevent="$root.submit();">
                                         <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" />
-                                        {{ __('Log Out') }}
+                                        Cerrar Sesión
                                     </x-dropdown-link>
                                 </form>
                             </x-slot>
                         </x-dropdown>
                     </div>
                 @else
-                    <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                        {{ __('Log In') }}
-                    </x-nav-link>
+                    <x-web-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        Inicia Sesión
+                    </x-web-nav-link>
+                    <x-web-nav-link href="{{ route('register') }}" :active="request()->routeIs('login')">
+                        Regístrate
+                    </x-web-nav-link>
                 @endif
             </div>
 
@@ -97,7 +162,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                {{ __('Home') }}
+                Inicio
             </x-responsive-nav-link>
 
             @foreach ($pages as $page)
@@ -114,14 +179,14 @@
                     @if (Auth::user()->isAdmin())
                         <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             <x-icon name="star" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                            {{ __('Admin') }}
+                            Admin Panel
                         </x-responsive-nav-link>
                     @endif
 
                     <!-- Account Management -->
                     <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         <x-icon name="user" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                        {{ __('Profile') }}
+                        Perfil
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
@@ -131,15 +196,15 @@
                         <x-responsive-nav-link href="{{ route('logout') }}"
                                     @click.prevent="$root.submit();">
                             <x-icon name="arrow-right-on-rectangle" class="inline-flex align-text-bottom w-4 h-4 mr-1" /> 
-                            {{ __('Log Out') }}
+                            Cerrar Sesión
                         </x-responsive-nav-link>
                     </form>
                 @else
                     <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                        {{ __('Log In') }}
+                        Inicia Sesión
                     </x-responsive-nav-link>
                     <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                        {{ __('Register') }}
+                        Regístrate
                     </x-responsive-nav-link>
                 @endif
             </div>

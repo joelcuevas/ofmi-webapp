@@ -2,9 +2,9 @@
     <x-content-card>
     <x-table-index>
         <x-slot name="header">
-            <x-table-index.th label="{{ __('Name') }}" />
-            <x-table-index.th label="{{ __('Email') }}" />
-            <x-table-index.th label="{{ __('Role') }}" />
+            <x-table-index.th label="Nombre" />
+            <x-table-index.th label="Email" />
+            <x-table-index.th label="Rol" />
             <x-table-index.th label="" />
         </x-slot>
 
@@ -24,7 +24,7 @@
                 <x-table-index.tr>
                     <x-table-index.td colspan="4">
                         <x-icon name="face-frown" class="inline align-text-bottom w-4 h-4" /> 
-                        {{ __('Nothing to see...') }}
+                        Nada por aquí...
                     </x-table-index.td>
                 </x-table-index.tr>
             @endforelse
@@ -36,7 +36,7 @@
     </x-slot>
 
     <x-slot name="tooltips">
-        <x-tooltip id="tooltip-change-role" label="{{ __('Change Role') }}" />
+        <x-tooltip id="tooltip-change-role" label="Cambiar Rol" />
     </x-slot>
 </x-content-card>
 </div>

@@ -38,4 +38,11 @@ class ContestController extends Controller
 
         return view('contests.edit', ['contest' => $contest]);
     }
+
+    public function view(Request $request, $year)
+    {
+        $contest = Contest::where('year', $year)->firstOrFail();
+
+        return view('contests.view', ['contest' => $contest]);
+    }
 }

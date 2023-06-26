@@ -49,6 +49,9 @@ Route::middleware([
     Route::get('/rules', [WebsiteController::class, 'home'])->name('rules');
     Route::get('/contest', [WebsiteController::class, 'home'])->name('contest');
 
+    Route::get('/ofmi-{year}', [ContestController::class, 'view'])->name('contests.view');
+    Route::get('/resultados', [ContestController::class, 'view'])->name('contests.results');
+
     // IMPORTANT: this should always be the last route
     Route::get('/{slug}', [PageController::class, 'view'])->name('pages.view');
 });

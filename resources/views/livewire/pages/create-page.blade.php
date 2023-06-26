@@ -1,27 +1,27 @@
 <div>
-    <x-button wire:click="$set('creating', true)">{{ __('Create Page') }}</x-button>
+    <x-button wire:click="$set('creating', true)">Crear Página</x-button>
 
     <x-modal wire:model="creating">
         <x-form-section submit="create">
             <x-slot name="title">
-                {{ __('Create Page') }}
+                Crear Página
             </x-slot>
 
             <x-slot name="form">
                 <div class="col-span-6 sm:col-span-2">
-                    <x-label for="slug" value="{{ __('URL Slug') }}" />
+                    <x-label for="slug" value="Slug (URL)" />
                     <x-input id="slug" name="slug" type="text" class="mt-1 block w-full" wire:model.defer="slug" maxlength="25" />
                     <x-input-error for="slug" class="mt-2" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-2">
-                    <x-label for="label" value="{{ __('Short Label') }}" />
+                    <x-label for="label" value="Nombre Corto" />
                     <x-input id="label" name="label" type="text" class="mt-1 block w-full" wire:model.defer="label" maxlength="25" />
                     <x-input-error for="label" class="mt-2" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-2">
-                    <x-label for="order" value="{{ __('Menu Order') }}" />
+                    <x-label for="order" value="Orden en Menú" />
                     <x-inputs.select id="order" wire:model.defer="order" class="mt-1 block w-full">
                         <option value="" disabled selected>{{ __('Select...') }}</option>
                         <option value="0">{{ __('Hide in menu') }}</option>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="col-span-6">
-                    <x-label for="title" value="{{ __('Title') }}" />
+                    <x-label for="title" value="Título" />
                     <x-input id="title" name="title" type="text" class="mt-1 block w-full" wire:model.defer="title" maxlength="150" />
                     <x-input-error for="title" class="mt-2" />
                 </div>
@@ -47,11 +47,11 @@
 
             <x-slot name="actions">
                 <x-secondary-button wire:click="$toggle('creating')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    Cancelar
                 </x-secondary-button>
 
                 <x-button class="ml-2">
-                    {{ __('Create') }}
+                    Crear
                 </x-button>
             </x-slot>
         </x-form-section>

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Users') }}
+        Usuarios
     </x-slot>
 
     <x-slot name="toolbar">
         <!-- Search -->
-        <x-search-input submit="{{ route('users.index') }}" placeholder="{{ __('Search for users') }}"/>
+        <x-search-input submit="{{ route('users.index') }}" placeholder="Buscar usuarios"/>
     </x-slot>
 
     @livewire('users.users-index', ['q' => request()->q])
